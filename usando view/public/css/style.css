@@ -3,8 +3,8 @@
 .linkArea { padding: 15px 0; }
 
 .inputArea { width: 100%; }
-.inputArea button { width: 130px; }
-.inputArea input { width: 250px; margin-right: 20px; }
+.inputArea .text-input { width: 250px; margin-right: 20px; }
+.inputArea .btn-submit { width: 130px; }
 
 .center-content { position: absolute; top: 20%; left: 760px;  }
 .center-text { text-align: center; }

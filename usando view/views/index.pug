@@ -7,13 +7,16 @@ head
     title Main
 
 body
-    div(class='center-content center-text container')
-        h1(class="titulo-principal") Bem vindo ao root
-        div(id="inputArea")
-            input(id='section' type='text' placeholder='Navegue por uma section')
-            button(onclick='carregarLink()') Enviar 
+    div(class='center-content container')
+        h1(class="titulo-principal center-text") Bem vindo ao root
+        div(id='inputArea')
+            span(class='text-input')
+                input(class="ipt" id='route' type='text' placeholder='Navegue por uma section')
+            
+            span(class='btn-submit')
+                button(class='btn' onclick='carregarLink()') Enviar 
        
-        div(id='linkArea' class='linkArea')
+        div(id='linkArea' class='linkArea center-text')
 
 
     script(src="js/main_fetch.js")

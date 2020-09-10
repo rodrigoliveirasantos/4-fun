@@ -3,6 +3,7 @@ const url = require('url');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const updatesRouter = require('./routes/updates.js')
 
 const app = express();
 const host = "127.0.0.1";
@@ -36,7 +37,7 @@ const options = {
     root: __dirname
 }
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
     const params = url.parse(req.url, true).query;
     const path = choosePath(params);
 
@@ -48,6 +49,8 @@ app.get('*', (req, res) => {
     res.render(path)
 
 })
+
+app.use('/', updatesRouter)
 
 app.listen(port, () => {
     console.log('Web service carregado')

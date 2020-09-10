@@ -1,5 +1,5 @@
 const baseUrl = '127.0.0.1'
-const input = document.getElementById('section')
+const input = document.getElementsByClassName('text-input')[0].children[0]
 const linkArea = document.getElementById('linkArea');
 
 function carregarLink() {

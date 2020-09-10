@@ -1,0 +1,11 @@
+{
+    "1.0": {
+        "type": ["Implementação", "Conserto de bugs"],
+        "desc": "Adicionado caminho 'updates'"
+    },
+
+    "1.1": {
+        "type": ["Teste"],
+        "desc": "Descrição deveras grande mesmo meu confrade espero que nao de espaço"
+    }
+}

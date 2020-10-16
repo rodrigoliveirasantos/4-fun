@@ -23,6 +23,8 @@
 
 - Para instalar todas as dependencias do Root apenas entre com o comando: `npm upgrade`.
 
+- Enfim, para executar use o comando: `npm start` e voa-lá.
+
 <br />
 
 ## -> Considerações :warning: :

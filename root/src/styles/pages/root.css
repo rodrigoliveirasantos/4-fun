@@ -1,0 +1,75 @@
+/* 1920/2 = 960 - 284 = 676*/
+/* 960 - 145 = 815 */
+@keyframes toYellow {
+    0% {
+        background: #C65D5D;
+    }
+    100% {
+        background: rgb(253, 232, 112);
+    }
+}
+
+
+#page-root > h1 {
+    
+    width: 568px;
+
+    position: absolute;
+    top: 200px;
+    left: 676px;
+
+    font-size: 64px;
+    line-height: 72px;
+    text-align: center;
+}
+
+#page-root .grid-container {
+    width: 300px;
+    height: 300px;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    position: absolute;
+    top: 440px;
+    left: 815px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#page-root .grid-container .grid-item {
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 4px;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+   
+}
+
+.square {
+    width: 90px;
+    height: 90px;
+
+    position: absolute;
+
+    background: #C65D5D;
+    mix-blend-mode: normal;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.25);
+    
+    transition: 0.1s ease-out;
+}
+
+#page-root .grid-container .grid-item .square.binded {
+    filter: brightness(105%);
+    transform: rotate(-3deg);
+}
+
+/* 156 */
+.grid-item#a1 .square, .grid-item#b2 .square, .grid-item#b3 .square{
+    animation: toYellow .2s ease;
+    background: rgb(253, 232, 112);
+}

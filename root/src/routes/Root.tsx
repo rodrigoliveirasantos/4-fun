@@ -8,6 +8,10 @@ export default function Root(){
         <div id="page-root">
             <h1 style={{userSelect: 'none'}} unselectable="on"> Bem vindo ao root </h1>
             <Grid />
+
+            <div className='password-preview'>
+                <span></span>
+            </div>
         </div>
     )
 }

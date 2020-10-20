@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Drop from '../modules/Drop'
+import DraggableObserver from '../modules/DraggableObserver';
 
 export default function Draggable(){
     const [cursorDiffX, setCursorDiffX] = useState(0);
@@ -46,13 +47,18 @@ export default function Draggable(){
 
             // Se soltar fora ou caso tenha um quadrado dentro, ele volta pro que tava antes
             if (!selectedSlot || selectedSlot.children[0]){
-                resetSquarePosition()
+                resetSquarePosition();
                 return
             }
 
             // Ancora ele a um item da grid e reposiciona
-            selectedSlot.appendChild(draggableSquare)
-            resetSquarePosition()
+            selectedSlot.appendChild(draggableSquare);
+            resetSquarePosition();
+
+            DraggableObserver.notify({
+                draggable: selectedSlot.children[0],
+                selectedSlot: selectedSlot
+            })
             
         }
     }
@@ -71,6 +77,6 @@ export default function Draggable(){
     document.onmouseup = dragEnd;
 
     return (
-        <div id='draggableSquare' className='square' style={styles} onMouseDown={dragStart} ></div>
+        <div id='draggableSquare' className='square' style={styles} onMouseDown={dragStart} data-type="password-square"></div>
     )
 }

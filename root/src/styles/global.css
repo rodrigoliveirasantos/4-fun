@@ -6,6 +6,7 @@
 
 body {
     background-color: #FFFBF2;
+    transition: 0.2s;
 }
 
 body, input {

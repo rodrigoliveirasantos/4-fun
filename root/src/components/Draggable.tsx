@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Drop from '../modules/Drop'
 import DraggableObserver from '../modules/DraggableObserver';
 
 export default function Draggable(){
@@ -7,6 +6,7 @@ export default function Draggable(){
     const [cursorDiffY, setCursorDiffY] = useState(0);
     const [dragging, setDragging] = useState(false);
     const [styles, setStyles] = useState({});
+    const [draggableRef] = useState(React.createRef() as React.RefObject<HTMLDivElement>)
 
     // Calculando diferença de distancia do cursor para a div
     function dragStart(event: React.MouseEvent){
@@ -35,31 +35,26 @@ export default function Draggable(){
 
     }
 
-    function dragEnd(event: MouseEvent){
+    function getSquareCenterCoords(target: Element) {
+        const square = target!;
+        const {x: squareX, y: squareY, width: squareWidth, height: squareHeight} = square.getBoundingClientRect();
+        return {
+            x: squareWidth / 2 + squareX,
+            y: squareHeight / 2 + squareY,
+        } 
+    }
+
+    function dragEnd(){
 
         if(dragging){
             setDragging(false);
 
-            const draggableSquare = document.getElementsByClassName('binded')[0];
-            draggableSquare.classList.remove('binded');
-
-            const selectedSlot = Drop.getSelectedSlot(draggableSquare);
-
-            // Se soltar fora ou caso tenha um quadrado dentro, ele volta pro que tava antes
-            if (!selectedSlot || selectedSlot.children[0]){
-                resetSquarePosition();
-                return
-            }
-
-            // Ancora ele a um item da grid e reposiciona
-            selectedSlot.appendChild(draggableSquare);
-            resetSquarePosition();
-
-            DraggableObserver.notify({
-                draggable: selectedSlot.children[0],
-                selectedSlot: selectedSlot
+            const validDrop = DraggableObserver.notify({
+                draggableRef,
+                coords: getSquareCenterCoords(draggableRef.current!)
             })
-            
+
+            resetSquarePosition();
         }
     }
 
@@ -77,6 +72,6 @@ export default function Draggable(){
     document.onmouseup = dragEnd;
 
     return (
-        <div id='draggableSquare' className='square' style={styles} onMouseDown={dragStart} data-type="password-square"></div>
+        <div id='draggableSquare' ref={draggableRef} className='square' style={styles} onMouseDown={dragStart} data-type="password-square"></div>
     )
 }

@@ -12,13 +12,18 @@ class DraggableObservable {
     }
 
     notify(data: NotifyData){
-        this.observers.forEach(observer => observer(data))
+        const dropSuccess = this.observers.some(observer => observer(data))
+        return dropSuccess
     }
 }
 
 interface NotifyData {
-    draggable: Element,
-    selectedSlot: Element
+    draggableRef: React.RefObject<HTMLDivElement>,
+    coords: {
+        x: number,
+        y: number
+    }
 }
 
-export default new DraggableObservable()
+export default  new DraggableObservable()
+
